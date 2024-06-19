@@ -12,5 +12,5 @@
     "types": ["vitest/globals"]
   },
   "include": ["src"],
-  "exclude": ["src/tests", "src/components/*/*.*.spec.ts", "./*.ts"]
+  "exclude": ["src/**/*.spec.ts", "./*.ts"]
 }

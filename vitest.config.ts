@@ -6,7 +6,7 @@ plugins: [swc.vite()],
   test: {
       globals: true,
       includeSource: [  
-        'src/components/*/*.spec.{js,ts}' // Component testing
+        'src/**/*.spec.{js,ts}' // Component testing
       ],
       exclude:  ['node_modules', 'dist', '.idea', '.git', '.cache'],
     },
