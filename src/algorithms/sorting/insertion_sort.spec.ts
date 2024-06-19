@@ -2,7 +2,7 @@ import { describe, expect, test } from 'vitest'
 import {insertionSort} from './insertion_sort'
 import { DIRECTION } from './utils';
 
-describe.concurrent("Testing Bubble Sort()", async() => {
+describe.concurrent("Testing Insertion Sort()", async() => {
 
     test("Testing Ascending Sort", async() => {
         const arr: number[] = [101,3,5,6,99,44,14, 100, -2, -7];
