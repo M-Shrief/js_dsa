@@ -1,5 +1,5 @@
 
-class DoublyNode<T>{
+export class DoublyNode<T>{
     public data: T;
     public prev: DoublyNode<T> | null;
     public next: DoublyNode<T> | null;
