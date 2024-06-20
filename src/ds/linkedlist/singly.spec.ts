@@ -71,9 +71,12 @@ describe.concurrent("Testing SinglyLinkedList", async() => {
 
         list.reverse()
         expect(list.getArray()).toEqual([1,2,3,4])
+        let n = list.getNode(2)
+        expect(n?.data).toEqual(3)
+        expect(n?.next?.data).toEqual(4)
     })
 
-    test("Testing reverse()", async() => {
+    test("Testing getArray()", async() => {
         let list = new SignlyLinkedList<number>();
         list.addFirst(1);
         list.addFirst(2);

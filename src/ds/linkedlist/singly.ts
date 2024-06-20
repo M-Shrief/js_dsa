@@ -29,14 +29,14 @@ export class SignlyLinkedList<T> {
     }
 
     public getTail(): SinglyNode<T> | null {
-        if (this.size <= 1) return this.getHead()
+        if (this.size <= 1) return this.head
         return this.tail;
     }
 
     public getNode(position: number): SinglyNode<T> | null {
         if(position < 0 || position >= this.size) return null;
         
-        if(position == 0) return this.getHead();
+        if(position == 0) return this.head;
         
         if(position == this.size -1) return this.getTail();
 
@@ -67,10 +67,8 @@ export class SignlyLinkedList<T> {
         }
 
         let singlyNode = new SinglyNode(val);
-        if(this.tail != null) {
-            this.tail.next = singlyNode;
-            this.tail = singlyNode;
-        }
+        this.tail!.next = singlyNode;
+        this.tail = singlyNode;
         this.size++;
     }
 
