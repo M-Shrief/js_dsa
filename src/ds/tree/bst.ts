@@ -269,44 +269,44 @@ export class BST<T> {
         }
         switch(method) {
             case "preOrder":
-                this.preOrder(this.root,arrPush);
+                this.preOrderTraversal(this.root,arrPush);
                 break;
             case "inOrder": 
-                this.inOrder(this.root, arrPush);
+                this.inOrderTraversal(this.root, arrPush);
                 break;
             case "postOrder": 
-                this.postOrder(this.root, arrPush);
+                this.postOrderTraversal(this.root, arrPush);
                 break
             default:
-                this.inOrder(this.root, arrPush);
+                this.inOrderTraversal(this.root, arrPush);
         }
 
         return list;
     }
 
-    private preOrder(node: BSNode<T> | null, callback: (node: BSNode<T>) => any) {
+    private preOrderTraversal(node: BSNode<T> | null, callback: (node: BSNode<T>) => any) {
         if (node == null) return;
 
         callback(node);
-        this.preOrder(node.left, callback);
-        this.preOrder(node.right, callback);
+        this.preOrderTraversal(node.left, callback);
+        this.preOrderTraversal(node.right, callback);
         return
     }
 
-    private inOrder(node: BSNode<T> | null, callback: (node: BSNode<T>) => any) {
+    private inOrderTraversal(node: BSNode<T> | null, callback: (node: BSNode<T>) => any) {
         if (node == null) return;
 
-        this.inOrder(node.left, callback);
+        this.inOrderTraversal(node.left, callback);
         callback(node);
-        this.inOrder(node.right, callback);
+        this.inOrderTraversal(node.right, callback);
         return
     }
 
-    private postOrder(node: BSNode<T> | null, callback: (node: BSNode<T>) => any) {
+    private postOrderTraversal(node: BSNode<T> | null, callback: (node: BSNode<T>) => any) {
         if (node == null) return;
 
-        this.postOrder(node.left, callback);
-        this.postOrder(node.right, callback);
+        this.postOrderTraversal(node.left, callback);
+        this.postOrderTraversal(node.right, callback);
         callback(node);
         return
     }
