@@ -256,53 +256,58 @@ export class BST<T> {
     }
 
 
-    public DFT(method: "preOrder" | "inOrder" | "postOrder"): T[] {
+    public DFT(method?: "preOrder" | "inOrder" | "postOrder", fn?: (val: T) => any): T[] {
         let list: T[] = [];
         if(this.size == 0) return list;
 
+        let arrPush = (node: BSNode<T>) => {
+            if (fn) {
+                list.push(fn(node.val));
+            } else {
+                list.push(node.val)
+            }
+        }
         switch(method) {
             case "preOrder":
-                this.preOrder(list, this.root);
+                this.preOrder(this.root,arrPush);
                 break;
             case "inOrder": 
-                this.inOrder(list, this.root);
+                this.inOrder(this.root, arrPush);
                 break;
             case "postOrder": 
-                this.postOrder(list, this.root);
+                this.postOrder(this.root, arrPush);
                 break
             default:
-                this.inOrder(list, this.root);
+                this.inOrder(this.root, arrPush);
         }
 
         return list;
     }
 
-    // public DFT(): BSNode<T> | null {}
-
-    private preOrder(list: T[], node: BSNode<T> | null) {
+    private preOrder(node: BSNode<T> | null, callback: (node: BSNode<T>) => any) {
         if (node == null) return;
 
-        list.push(node.val);
-        this.preOrder(list, node.left);
-        this.preOrder(list, node.right);
+        callback(node);
+        this.preOrder(node.left, callback);
+        this.preOrder(node.right, callback);
         return
     }
 
-    private inOrder(list: T[], node: BSNode<T> | null) {
+    private inOrder(node: BSNode<T> | null, callback: (node: BSNode<T>) => any) {
         if (node == null) return;
 
-        this.inOrder(list, node.left);
-        list.push(node.val);
-        this.inOrder(list, node.right);
+        this.inOrder(node.left, callback);
+        callback(node);
+        this.inOrder(node.right, callback);
         return
     }
 
-    private postOrder(list: T[], node: BSNode<T> | null) {
+    private postOrder(node: BSNode<T> | null, callback: (node: BSNode<T>) => any) {
         if (node == null) return;
 
-        this.postOrder(list, node.left);
-        this.postOrder(list, node.right);
-        list.push(node.val);
+        this.postOrder(node.left, callback);
+        this.postOrder(node.right, callback);
+        callback(node);
         return
     }
 
