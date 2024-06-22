@@ -221,4 +221,23 @@ describe.concurrent("Testing Binary Search Tree (BST)", async() => {
         let postOrderX2 = tree.DFT("postOrder", (x: number) => x*2);
         expect(postOrderX2).toEqual([1, 3, 2, 6, 8, 7, 5].map(x => x*2))   
     })
+
+    test("Testing DFS", async()  => {
+        let tree = new BST<number>();
+        tree.insert(5)
+		tree.insert(2)
+		tree.insert(1)
+		tree.insert(3)
+		tree.insert(7)
+		tree.insert(6)
+		tree.insert(8)
+
+        expect(tree.DFS(2, "preOrder")).toEqual(tree.getRoot()?.left)
+        expect(tree.DFS(2, "inOrder")).toEqual(tree.getRoot()?.left)
+        expect(tree.DFS(2, "postOrder")).toEqual(tree.getRoot()?.left)
+
+        expect(tree.DFS(8, "preOrder")).toEqual(tree.getRoot()?.right?.right)
+        expect(tree.DFS(8, "inOrder")).toEqual(tree.getRoot()?.right?.right)
+        expect(tree.DFS(8, "postOrder")).toEqual(tree.getRoot()?.right?.right)
+    })
 })

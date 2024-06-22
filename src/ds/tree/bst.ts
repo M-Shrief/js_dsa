@@ -311,4 +311,60 @@ export class BST<T> {
         return
     }
 
+    public DFS(data: T, method?: "preOrder" | "inOrder" | "postOrder"): BSNode<T> | null {
+        if(this.size == 0) return null;
+
+        switch(method) {
+            case "preOrder":
+                return this.preOrderSearch(data, this.root);
+            case "inOrder": 
+                return this.inOrderSearch(data, this.root);
+            case "postOrder": 
+                return this.postOrderSearch(data, this.root);
+            default:
+                return this.inOrderSearch(data, this.root);
+        }
+    }
+
+    private preOrderSearch(data: T, node: BSNode<T> | null): BSNode<T> | null {
+        if (node == null) return null;
+
+        if(data == node.val) return node;
+
+        let res1 = this.preOrderSearch(data, node.left);
+        if(res1 != null) return res1;
+
+        let res2 = this.preOrderSearch(data, node.right);
+        if(res2 != null) return res2;
+
+        return null
+    }
+
+    private inOrderSearch(data: T, node: BSNode<T> | null): BSNode<T> | null {
+        if (node == null) return null;
+
+        let res1 = this.inOrderSearch(data, node.left);
+        if(res1 != null) return res1;
+
+
+        if(data == node.val) return node;
+
+        let res2 = this.inOrderSearch(data, node.right);
+        if(res2 != null) return res2;
+        
+        return null
+    }
+
+    private postOrderSearch(data: T, node: BSNode<T> | null): BSNode<T> | null {
+        if (node == null) return null;
+
+        let res1 = this.inOrderSearch(data, node.left);
+        if(res1 != null) return res1;
+
+        let res2 = this.inOrderSearch(data, node.right);
+        if(res2 != null) return res2;
+
+        if(data == node.val) return node;
+        return null
+    }
 }
