@@ -17,8 +17,12 @@ describe.concurrent("Testing LRU", async() => {
         expect(lru.get("three")).toEqual(3);
 
         lru.put("four", 4);
+        expect(lru.getTop()).toEqual(4);
         expect(lru.get("one")).toEqual(null);
-        expect(lru.get("four")).toEqual(4);
+
+        lru.put("five", 5);
+        expect(lru.getTop()).toEqual(5)
+        expect(lru.get("two")).toEqual(null);
     })
 
     test("Testing Get()", async() => {
@@ -34,5 +38,15 @@ describe.concurrent("Testing LRU", async() => {
         expect(lru.getTop()).toEqual(2)
         expect(lru.get("three")).toEqual(3);
         expect(lru.getTop()).toEqual(3)
+
+        lru.put("four", 4)
+        expect(lru.get("four")).toEqual(4);
+        expect(lru.getTop()).toEqual(4);
+        expect(lru.get("one")).toEqual(null);
+
+        lru.put("five", 5)
+        expect(lru.get("five")).toEqual(5);
+        expect(lru.getTop()).toEqual(5);
+        expect(lru.get("two")).toEqual(null);
     })
 })
