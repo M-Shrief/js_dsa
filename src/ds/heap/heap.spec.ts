@@ -39,6 +39,21 @@ describe.concurrent("Testing Heap", async() => {
             h.pop()
             expect(h.getTop()).toEqual(-1);
         })
+
+        test("Testing Delete()", async() => {
+            let h = new Heap<number>(isSmaller);
+            h.push(1);
+            h.push(6);
+            h.push(4);    
+
+            h.delete(1);
+            expect(h.getTop()).toEqual(4)
+
+            // Delete non-existing value without errors
+            h.delete(5)
+            h.delete(100)
+            h.delete(-1)
+        })
     })
 
     describe("MaxHeap", async() => {

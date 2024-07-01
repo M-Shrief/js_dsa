@@ -17,6 +17,29 @@ export class Heap<T> {
         return this.list[0];
     }
 
+    public getSize(): number {
+        return this.list.length;
+    }
+
+    public delete(val: T): boolean {
+        let i = 0;
+        let found = false;
+        while (i < this.list.length) {
+            if(this.list[i] === val) {
+                found = true;
+                break;
+            }
+            i++
+        }
+        if(found) {
+            this.swap(i, this.list.length - 1);
+            this.list = this.list.slice(0,this.list.length -1)
+            this.down(i)
+            return true;
+        }
+        return false;
+    }
+
     public push(val: T) {
         this.list.push(val);
         this.up(this.list.length-1)
