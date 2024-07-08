@@ -3,17 +3,21 @@ import { Queue } from '../queue/queue';
 // Class to represent a graph using adjacency list
 export class Graph<T> {
   private adjList: Map<T, Array<T>>;
+  private isDirected: boolean;
 
-  constructor() {
+  constructor(isDirected: boolean) {
     this.adjList = new Map<T, Array<T>>();
+    this.isDirected = isDirected;
   }
 
   // Function to add an edge to the graph
   addEdge(n1: T, n2: T) {
     if (!this.adjList.has(n1)) this.adjList.set(n1, []);
     this.adjList.get(n1)?.push(n2);
-    // if (!this.adjList.has(n2)) this.adjList.set(n2, []);
-    // this.adjList.get(n2)?.push(n1);
+    if(this.isDirected) {
+      if (!this.adjList.has(n2)) this.adjList.set(n2, []);
+      this.adjList.get(n2)?.push(n1);
+    }
   }
 
   // Function to perform Breadth First Search on a graph represented using adjacency list
