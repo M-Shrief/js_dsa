@@ -10,12 +10,16 @@ export class Graph<T> {
     this.isDirected = isDirected;
   }
 
+  addVertex(v: T) {
+    this.adjList.set(v, []);
+  }
+  
   // Function to add an edge to the graph
   addEdge(n1: T, n2: T) {
-    if (!this.adjList.has(n1)) this.adjList.set(n1, []);
+    if (!this.adjList.has(n1)) this.addVertex(n1);
     this.adjList.get(n1)?.push(n2);
     if(this.isDirected) {
-      if (!this.adjList.has(n2)) this.adjList.set(n2, []);
+      if (!this.adjList.has(n2)) this.addVertex(n2);
       this.adjList.get(n2)?.push(n1);
     }
   }
