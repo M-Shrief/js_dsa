@@ -2,12 +2,13 @@ import { defineConfig } from 'vitest/config';
 import swc from 'unplugin-swc';
 
 export default defineConfig({
-plugins: [swc.vite()],
+  plugins: [swc.vite()],
   test: {
-      globals: true,
-      includeSource: [  
-        'src/**/*.spec.{js,ts}' // Component testing
-      ],
-      exclude:  ['node_modules', 'dist', '.idea', '.git', '.cache'],
-    },
+    globals: true,
+    includeSource: [  
+      'src/**/*.spec.{js,ts}',
+      'src/problems/**/**.{js,ts}' // Component testing
+    ],
+    exclude:  ['node_modules', 'dist', '.idea', '.git', '.cache'],
+  },
 })
