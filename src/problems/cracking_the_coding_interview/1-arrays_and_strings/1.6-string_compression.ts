@@ -23,7 +23,7 @@ function compress_string_v1(str: string): string {
     // Adding last iteration
     compressedStr += `${currentLetter}${currentLetterCount}`;
 
-    return compressedStr;
+    return compressedStr.length < str.length ? compressedStr : str;
 }
 
 if(import.meta.vitest) {
