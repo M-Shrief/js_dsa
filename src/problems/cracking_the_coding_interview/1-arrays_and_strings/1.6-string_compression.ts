@@ -33,6 +33,7 @@ if(import.meta.vitest) {
             expect(compress_string_v1("aabcccccaaa")).toEqual("a2b1c5a3");
             expect(compress_string_v1("bbbbccdddd")).toEqual("b4c2d4");
             expect(compress_string_v1("aaaaaaaaaa")).toEqual("a10");
+            expect(compress_string_v1("abc")).toEqual("abc");
         })
     })
 }
