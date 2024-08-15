@@ -3,6 +3,7 @@
  * its entire row and column are set to 0.
  */
 
+// Time: O(n^2) - Space: O(n)
 function zero_matrix_v1(matrix: number[][]): number[][] {
     let targetRows = [];
     let targetCols = [];
@@ -30,13 +31,6 @@ function zero_matrix_v1(matrix: number[][]): number[][] {
 
     return matrix;
 }
-// const matrix = [
-//     [1,2,3,4],
-//     [5,6,7,0],
-//     [9,10,11,12],
-//     [13,14,15,16]
-// ];
-// console.info(zero_matrix_v1(matrix))
 
 if(import.meta.vitest) {
     const { describe, test, expect } = import.meta.vitest
