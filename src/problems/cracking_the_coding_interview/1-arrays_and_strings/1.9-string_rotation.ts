@@ -6,6 +6,7 @@
  */
 
 
+// Time: O(n^2) - Space: O(n)
 function is_rotation(s1: string, s2: string): boolean {
     if(s1.length != s2.length) return false;
 

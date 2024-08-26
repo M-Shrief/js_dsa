@@ -1,4 +1,4 @@
-class SinglyNode<T> {
+export class SinglyNode<T> {
   public data: T;
   public next: SinglyNode<T> | null;
 
