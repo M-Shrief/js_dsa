@@ -21,6 +21,8 @@ describe.concurrent('Testing MRU', async () => {
     mru.put('five', 5);
     expect(mru.get('four')).toEqual(null);
     expect(mru.get('five')).toEqual(5);
+
+    mru.get("two")
   });
 
   test('Testing Get()', async () => {

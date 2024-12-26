@@ -68,9 +68,14 @@ describe.concurrent('Testing SinglyLinkedList', async () => {
     list.addFirst(4);
 
     let n1 = list.getNode(2);
-    expect(list.deleteByNode(n1!)).toBe(2);
+    let deleted1 = list.deleteByNode(n1!)
+    expect(deleted1).toBe(2);
     let n2 = list.getNode(2);
     expect(list.deleteByNode(n2!)).toBe(1);
+
+    let n3 = list.getNode(3)
+    expect(n3).toBe(null)
+    expect(list.deleteByNode(n3!)).toBe(null);
   });
 
   test('Testing reverse()', async () => {

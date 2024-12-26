@@ -55,8 +55,11 @@ export class LRU<T> {
     let n = this.storage.get(key);
     if (!n) return null;
 
+    // Delete the node from Linkedlist
     this.dl.deleteByNode(n);
+    // Add the node again and update its value in the storage
     this.dl.addFirst(n.data);
+    this.storage.set(n.data.key, this.dl.getHead()!);
 
     return n.data.value;
   }

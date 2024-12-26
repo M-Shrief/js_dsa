@@ -124,7 +124,8 @@ export class DoublyLinkedList<T> {
     return removed!.data;
   }
 
-  public deleteByNode(node: DoublyNode<T>): T | null {
+  public deleteByNode(node: DoublyNode<T> | null): T | null {
+    if(node == null) return null
     if (node == this.head) return this.deleteFirst();
     if (node == this.tail) return this.deleteLast();
 
