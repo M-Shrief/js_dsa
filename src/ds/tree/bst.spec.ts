@@ -131,7 +131,7 @@ describe.concurrent('Testing Binary Search Tree (BST)', async () => {
     expect(tree.getSize()).toBe(5);
 
     tree.delete(3);
-    let three = tree.search(1);
+    let three = tree.search(3);
     expect(three).toBe(null);
     let replacement3 = tree.getRoot()?.left;
     expect(replacement3).toBe(null);

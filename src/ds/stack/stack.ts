@@ -2,11 +2,9 @@ import { SignlyLinkedList } from '../linkedlist/singly';
 
 export class Stack<T> {
   private list: SignlyLinkedList<T>;
-  private size: number;
 
   constructor() {
     this.list = new SignlyLinkedList<T>();
-    this.size = this.list.getSize();
   }
 
   public getTop(): T | null {
